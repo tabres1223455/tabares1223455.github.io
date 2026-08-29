@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leomel M. Tabares | Portfolio</title>
+
+<!--
+  HOW TO CUSTOMIZE THIS FILE
+  1. Profile photo: find "profile-photo" below and swap the placeholder div for
+     <img src="your-photo.jpg" alt="Leomel M. Tabares" class="profile-photo">
+  2. Intro / career goals text: edit the paragraphs inside #about
+  3. Education dates & school names: edit the entries inside #education
+  4. Skills & proficiency: edit the list inside #skills (bar width = skill level)
+  5. Projects: edit the three cards inside #projects (title, description, tags, link)
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --blue:       #2F6FEB;
+    --blue-dark:  #1D4ED8;
+    --blue-tint:  #EAF2FF;
+
+    --green:      #17A672;
+    --green-dark: #0E8C5F;
+    --green-tint: #E7F9EF;
+
+    --yellow:      #F2B705;
+    --yellow-dark: #B98A00;
+    --yellow-tint: #FFF6DC;
+
+    --ink:      #172233;
+    --ink-soft: #59657A;
+    --white:    #FFFFFF;
+    --border:   rgba(23,34,51,0.10);
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body:    'Inter', sans-serif;
+    --font-mono:    'JetBrains Mono', monospace;
+
+    --nav-h: 72px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{
+    scroll-behavior: smooth;
+  }
+
+  body{
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,h2,h3{ font-family: var(--font-display); letter-spacing: -0.01em; }
+
+  a{ color: inherit; text-decoration: none; }
+  ul{ list-style:none; }
+  img{ max-width:100%; display:block; }
+
+  section{ scroll-margin-top: var(--nav-h); }
+
+  .wrap{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .eyebrow{
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+
+  /* ---------- NAVBAR ---------- */
+  .navbar{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .navbar .wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .brand{
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+  .brand span{ color: var(--blue-dark); }
+
+  .nav-links{
+    display: flex;
+    gap: 4px;
+  }
+  .nav-link{
+    font-size: 0.92rem;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-bottom: 2px solid transparent;
+    color: var(--ink-soft);
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .nav-link:hover{ color: var(--ink); }
+  .nav-link.active{ color: var(--ink); }
+  .nav-link.active[data-color="blue"]{ border-color: var(--blue); color: var(--blue-dark); }
+  .nav-link.active[data-color="yellow"]{ border-color: var(--yellow); color: var(--yellow-dark); }
+  .nav-link.active[data-color="green"]{ border-color: var(--green); color: var(--green-dark); }
+
+  .nav-toggle{
+    display:none;
+    flex-direction: column;
+    gap: 5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding: 8px;
+  }
+  .nav-toggle span{
+    width: 22px; height: 2px; background: var(--ink); border-radius: 2px;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  .section{
+    padding: 88px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-blue{ background: var(--blue-tint); }
+  .section-yellow{ background: var(--yellow-tint); }
+  .section-green{ background: var(--green-tint); }
+  .section-white{ background: var(--white); }
+
+  .section h2{
+    font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+    margin-bottom: 14px;
+  }
+  .section-intro{
+    color: var(--ink-soft);
+    max-width: 560px;
+    margin-bottom: 44px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  #about{ padding-top: 64px; }
+  .about-grid{
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .profile-photo{
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px dashed var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: var(--blue-dark);
+  }
+  .profile-photo svg{ width: 88px; height: 88px; opacity: 0.55; }
+  .photo-badge{
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    background: var(--blue-dark);
+    color: var(--white);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 4px 8px;
+    border-radius: 999px;
+  }
+
+  .about-name{
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    margin-bottom: 6px;
+  }
+  .about-tag{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: var(--blue-dark);
+    margin-bottom: 22px;
+  }
+  .about-tag::before{
+    content: "";
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green);
+  }
+
+  .about-text p{ margin-bottom: 14px; color: var(--ink); max-width: 520px; }
+  .about-text .label{
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 20px;
+    margin-bottom: 6px;
+  }
+
+  /* terminal card - signature element */
+  .terminal{
+    margin-top: 40px;
+    background: var(--ink);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px -20px rgba(23,34,51,0.35);
+    max-width: 520px;
+  }
+  .terminal-head{
+    display:flex;
+    align-items:center;
+    gap: 7px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.04);
+  }
+  .terminal-dot{ width:10px; height:10px; border-radius:50%; }
+  .terminal-head .terminal-dot:nth-child(1){ background: var(--blue); }
+  .terminal-head .terminal-dot:nth-child(2){ background: var(--yellow); }
+  .terminal-head .terminal-dot:nth-child(3){ background: var(--green); }
+  .terminal-file{
+    margin-left: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.45);
+  }
+  .terminal-body{
+    padding: 20px 22px 26px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+  .tk-com{ color: rgba(255,255,255,0.35); }
+  .tk-kw{ color: #7FB0FF; }
+  .tk-key{ color: rgba(255,255,255,0.85); }
+  .tk-str{ color: #6FE3A6; }
+
+  /* ---------- HOBBIES ---------- */
+  .hobby-card{
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 22px;
+    align-items: flex-start;
+    max-width: 640px;
+  }
+  .hobby-icon{
+    width: 64px; height: 64px;
+    border-radius: 14px;
+    background: var(--yellow-tint);
+    border: 1px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hobby-icon svg{ width: 32px; height: 32px; color: var(--yellow-dark); }
+  .hobby-card h3{ font-size: 1.2rem; margin-bottom: 8px; }
+  .hobby-card p{ color: var(--ink-soft); margin-bottom: 16px; }
+  .game-tags{ display:flex; flex-wrap:wrap; gap: 8px; }
+  .game-tag{
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    background: var(--yellow-tint);
+    border: 1px solid var(--border);
+    color: var(--yellow-dark);
+    padding: 5px 10px;
+    border-radius: 999px;
+  }
+
+  /* ---------- EDUCATION (timeline - genuinely chronological) ---------- */
+  .timeline{
+    max-width: 640px;
+    position: relative;
+    padding-left: 28px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left: 7px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: var(--border);
+  }
+  .timeline-item{
+    position: relative;
+    padding-bottom: 36px;
+  }
+  .timeline-item:last-child{ padding-bottom: 0; }
+  .timeline-dot{
+    position:absolute;
+    left: -28px; top: 4px;
+    width: 16px; height:16px;
+    border-radius:50%;
+    background: var(--green);
+    border: 3px solid var(--green-tint);
+    box-shadow: 0 0 0 2px var(--green);
+  }
+  .timeline-year{
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--green-dark);
+    margin-bottom: 4px;
+  }
+  .timeline-item h3{ font-size: 1.1rem; margin-bottom: 4px; }
+  .timeline-item p{ color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 32px;
+    max-width: 700px;
+  }
+  .skill-row .skill-top{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom: 8px;
+    font-size: 0.92rem;
+  }
+  .skill-name{ font-weight: 500; }
+  .skill-level{ font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-soft); }
+  .skill-bar{
+    height: 8px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .skill-bar span{
+    display:block; height: 100%; border-radius: 999px;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .project-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .project-card{
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-thumb{
+    height: 120px;
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.85);
+  }
+  .project-thumb.p1{ background: linear-gradient(135deg, var(--blue), var(--blue-dark)); }
+  .project-thumb.p2{ background: linear-gradient(135deg, var(--green), var(--green-dark)); }
+  .project-thumb.p3{ background: linear-gradient(135deg, var(--yellow-dark), #8a6600); }
+  .project-body{ padding: 22px; display:flex; flex-direction:column; flex:1; }
+  .project-body h3{ font-size: 1.05rem; margin-bottom: 8px; }
+  .project-body p{ color: var(--ink-soft); font-size: 0.9rem; margin-bottom: 16px; flex:1; }
+  .project-tags{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom: 16px; }
+  .project-tags span{
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    background: var(--blue-tint);
+    color: var(--blue-dark);
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+  .project-link{
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--blue-dark);
+  }
+  .project-link:hover{ text-decoration: underline; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background: var(--ink);
+    color: rgba(255,255,255,0.6);
+    padding: 32px 0;
+    text-align:center;
+    font-size: 0.85rem;
+  }
+  footer span{ color: rgba(255,255,255,0.9); }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.in-view{ opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .about-grid{ grid-template-columns: 1fr; text-align:center; }
+    .profile-photo{ margin: 0 auto; }
+    .about-tag{ margin-left:auto; margin-right:auto; }
+    .terminal{ margin-left:auto; margin-right:auto; }
+    .hobby-card{ grid-template-columns: 1fr; text-align:center; }
+    .hobby-icon{ margin: 0 auto; }
+    .project-grid{ grid-template-columns: 1fr; }
+    .skills-grid{ grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 720px){
+    .nav-links{
+      position: absolute;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--white);
+      flex-direction: column;
+      padding: 12px 24px 20px;
+      border-bottom: 1px solid var(--border);
+      display: none;
+    }
+    .nav-links.open{ display: flex; }
+    .nav-toggle{ display:flex; }
+    .nav-link{ padding: 12px 4px; border-bottom: 1px solid var(--border); border-radius:0; }
+    .nav-link.active{ border-color: var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="wrap">
+    <a href="#about" class="brand">Portfolio</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about" class="nav-link" data-color="blue">About</a>
+      <a href="#hobbies" class="nav-link" data-color="yellow">Hobbies</a>
+      <a href="#education" class="nav-link" data-color="green">Education</a>
+      <a href="#skills" class="nav-link" data-color="blue">Skills</a>
+      <a href="#projects" class="nav-link" data-color="yellow">Projects</a>
+      <a href="#contact" class="nav-link" data-color="green">contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ABOUT -->
+  <section id="about" class="section section-blue">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <!-- EDIT: replace this div with <img src="your-photo.jpg" alt="Leomel M. Tabares" class="profile-photo"> -->
+          <div class="profile-photo">
+            <img src="download.jpg" alt="LEOMEL">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <span class="photo-badge">add photo</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <span class="about-tag">🎓 Program: Computer Science</span>
+          <h1 class="about-name">Leomel M. Tabares</h1>
+          <div class="about-text">
+            <p class="label">Introduction</p>
+            <p>Hi, I'm Leomel — a Computer Science student who enjoys figuring out how things work by building them from scratch. I like turning ideas into working code and picking up new tools along the way.</p>
+
+            <p class="label">Career Goals</p>
+            <p>My goal is to grow into a capable software developer, take on projects that solve real problems, and keep learning as technology evolves.</p>
+          </div>
+
+          <div class="terminal">
+            <div class="terminal-head">
+              <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
+              <span class="terminal-file">student.js</span>
+            </div>
+            <div class="terminal-body">
+              <div><span class="tk-com">// currently</span></div>
+              <div><span class="tk-kw">const</span> <span class="tk-key">student</span> = {</div>
+              <div>&nbsp;&nbsp;name: <span class="tk-str">"Leomel M. Tabares"</span>,</div>
+              <div>&nbsp;&nbsp;program: <span class="tk-str">"Computer Science"</span>,</div>
+              <div>&nbsp;&nbsp;status: <span class="tk-str">"building & learning"</span>,</div>
+              <div>};</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOBBIES -->
+  <section id="hobbies" class="section section-yellow">
+    <div class="wrap">
+      <span class="eyebrow">// hobbies</span>
+      <h2>MY HOBBIES</h2>
+      <p class="section-intro">A quick look at what I enjoy doing in my free time.</p>
+
+      <div class="hobby-card reveal">
+        <div class="hobby-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="10" rx="4"/><line x1="7" y1="12" x2="7" y2="12"/><line x1="6" y1="10.5" x2="6" y2="13.5"/><line x1="4.5" y1="12" x2="7.5" y2="12"/><circle cx="16" cy="10.5" r="1"/><circle cx="18" cy="13" r="1"/></svg>
+        </div>
+        <div>
+          <h3>Playing Online Games</h3>
+          <p>I like playing online games in my downtime — it's a fun way to unwind, and honestly a lot of the strategy and problem-solving carries over into how I approach code.</p>
+          <div class="game-tags">
+            <span class="game-tag">Mobile Legends</span>
+            <span class="game-tag">Call of Duty</span>
+            <span class="game-tag">Minecraft</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="section section-green">
+    <div class="wrap">
+      <span class="eyebrow">// education</span>
+      <h2>Educational Background</h2>
+      <p class="section-intro">My academic path so far, in order.</p>
+
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2011 – 2017</div>
+          <h3>Elementary School</h3>
+          <p>Camposanto Elementary School</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2017 – 2023</div>
+          <h3>High School</h3>
+          <p>Moncada Highschool</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2023 – Present</div>
+          <h3>College</h3>
+          <p>St. Rose College Educational Foundation, inc.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section section-white">
+    <div class="wrap">
+      <span class="eyebrow">// skills</span>
+      <h2>Skills in Programming</h2>
+      <p class="section-intro">Languages and tools I'm comfortable working with. Bar length is a rough proficiency guide — edit to match your own level.</p>
+
+      <!-- EDIT: adjust names and the width % on each skill-bar span (skill-level text should match) -->
+      <div class="skills-grid reveal">
+        <div class="skill-row">
+          <div class="skill-top"><span class="skill-name">HTML &amp; CSS</span><span class="skill-level">55%</span></div>
+          <div class="skill-bar"><span style="width:55%; background:var(--blue);"></span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-top"><span class="skill-name">JavaScript</span><span class="skill-level">50%</span></div>
+          <div class="skill-bar"><span style="width:50%; background:var(--yellow-dark);"></span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-top"><span class="skill-name">Python</span><span class="skill-level">50%</span></div>
+          <div class="skill-bar"><span style="width:50%; background:var(--green);"></span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-top"><span class="skill-name">Java</span><span class="skill-level">50%</span></div>
+          <div class="skill-bar"><span style="width:50%; background:var(--blue);"></span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-top"><span class="skill-name">C++</span><span class="skill-level">40%</span></div>
+          <div class="skill-bar"><span style="width:40%; background:var(--yellow-dark);"></span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-top"><span class="skill-name">Git &amp; GitHub</span><span class="skill-level">40%</span></div>
+          <div class="skill-bar"><span style="width:40%; background:var(--green);"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section section-blue">
+    <div class="wrap">
+      <span class="eyebrow">// projects</span>
+      <h2>Projects</h2>
+      <p class="section-intro">A few things I've built. Replace these with your own work.</p>
+
+      <!-- EDIT: replace each card's title, description, tags and link -->
+      <div class="project-grid reveal">
+        <div class="project-card">
+          <div class="project-thumb p1">Personal Website</div>
+          <div class="project-body">
+            <h3>Project One</h3>
+            <div class="project-tags"><span>HTML</span><span>CSS</span></div>
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-thumb p2">Calculator</div>
+          <div class="project-body">
+            <h3>Project Two</h3>
+            <div class="project-tags"><span>Html</span><span>Css</span><span>C++</span></div>
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-thumb p3">Portfolio</div>
+          <div class="project-body">
+            <h3>Project Three</h3>
+            <div class="project-tags"><span>Html</span><span>Css</span><Span>Javascript</Span></div>
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section section-green">
+    <div class="form-container">
+        <h2>Contact</h2>
+        <!-- Replace action URL with your form handling endpoint -->
+        <form action="/submit-form" method="POST">
+            
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Leomel Tabares" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="tabaresleomel310@gmail.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="How can i help?" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+            
+        </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 <span>Leomel M. Tabares All Right Reserved</div>
+</footer>
+
+<script>
+  // mobile menu toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', false);
+    });
+  });
+
+  // active nav link highlighting, color-matched to section
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-link');
+
+  const setActive = (id) => {
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+  setActive('about');
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
